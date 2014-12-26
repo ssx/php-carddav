@@ -292,7 +292,7 @@ class CardDAV
 			break;
 
 			default:
-				throw new Exception('Woops, something\'s gone wrong! The CardDAV server returned the http status code ' . $result['http_code'] . '.', self::EXCEPTION_WRONG_HTTP_STATUS_CODE_GET);
+				throw new \Exception('Woops, something\'s gone wrong! The CardDAV server returned the http status code ' . $result['http_code'] . '.', self::EXCEPTION_WRONG_HTTP_STATUS_CODE_GET);
 			break;
 		}
 	}
@@ -316,7 +316,7 @@ class CardDAV
 			break;
 
 			default:
-				throw new Exception('Woops, something\'s gone wrong! The CardDAV server returned the http status code ' . $result['http_code'] . '.', self::EXCEPTION_WRONG_HTTP_STATUS_CODE_GET_VCARD);
+				throw new \Exception('Woops, something\'s gone wrong! The CardDAV server returned the http status code ' . $result['http_code'] . '.', self::EXCEPTION_WRONG_HTTP_STATUS_CODE_GET_VCARD);
 			break;
 		}
 	}
@@ -356,7 +356,7 @@ class CardDAV
 			break;
 
 			default:
-				throw new Exception('Woops, something\'s gone wrong! The CardDAV server returned the http status code ' . $result['http_code'] . '.', self::EXCEPTION_WRONG_HTTP_STATUS_CODE_GET_XML_VCARD);
+				throw new \Exception('Woops, something\'s gone wrong! The CardDAV server returned the http status code ' . $result['http_code'] . '.', self::EXCEPTION_WRONG_HTTP_STATUS_CODE_GET_XML_VCARD);
 			break;
 		}
 	}
@@ -420,7 +420,7 @@ class CardDAV
 			break;
 
 			default:
-				throw new Exception('Woops, something\'s gone wrong! The CardDAV server returned the http status code ' . $result['http_code'] . '.', self::EXCEPTION_WRONG_HTTP_STATUS_CODE_DELETE);
+				throw new \Exception('Woops, something\'s gone wrong! The CardDAV server returned the http status code ' . $result['http_code'] . '.', self::EXCEPTION_WRONG_HTTP_STATUS_CODE_DELETE);
 			break;
 		}
 	}
@@ -448,7 +448,7 @@ class CardDAV
 			break;
 
 			default:
-				throw new Exception('Woops, something\'s gone wrong! The CardDAV server returned the http status code ' . $result['http_code'] . '.', self::EXCEPTION_WRONG_HTTP_STATUS_CODE_ADD);
+				throw new \Exception('Woops, something\'s gone wrong! The CardDAV server returned the http status code ' . $result['http_code'] . '.', self::EXCEPTION_WRONG_HTTP_STATUS_CODE_ADD);
 			break;
 		}
 	}
@@ -468,7 +468,7 @@ class CardDAV
 		}
 		catch (Exception $e)
 		{
-			throw new Exception($e->getMessage(), self::EXCEPTION_WRONG_HTTP_STATUS_CODE_UPDATE);
+			throw new \Exception($e->getMessage(), self::EXCEPTION_WRONG_HTTP_STATUS_CODE_UPDATE);
 		}
 	}
 
@@ -481,18 +481,18 @@ class CardDAV
 	 */
 	private function simplify($response, $include_vcards = true)
 	{
-		$response = $this->clean_response($response);
+        $response = $this->clean_response($response);
 
 		try
 		{
-			$xml = new SimpleXMLElement($response);
+			$xml = new \SimpleXMLElement($response);
 		}
 		catch(Exception $e)
 		{
-			throw new Exception('The XML response seems to be malformed and can\'t be simplified!', self::EXCEPTION_MALFORMED_XML_RESPONSE, $e);
+			throw new \Exception('The XML response seems to be malformed and can\'t be simplified!', self::EXCEPTION_MALFORMED_XML_RESPONSE, $e);
 		}
 
-		$simplified_xml = new XMLWriter();
+		$simplified_xml = new \XMLWriter();
 		$simplified_xml->openMemory();
 		$simplified_xml->setIndent(4);
 
@@ -692,7 +692,7 @@ class CardDAV
 		}
 		catch (Exception $e)
 		{
-			throw new Exception($e->getMessage(), self::EXCEPTION_COULD_NOT_GENERATE_NEW_VCARD_ID);
+			throw new \Exception($e->getMessage(), self::EXCEPTION_COULD_NOT_GENERATE_NEW_VCARD_ID);
 		}
 	}
 

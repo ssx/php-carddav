@@ -9,10 +9,10 @@
   ],
   "autoload": {
     "psr-4": {
-      "SSX\\Utilities\\": "src"
+      "SSX\\Utilities\\": "src/"
     }
   },
   "require": {
-    
+
   }
 }
