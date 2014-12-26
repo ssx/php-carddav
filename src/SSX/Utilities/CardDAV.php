@@ -1,4 +1,5 @@
 <?php
+namespace SSX\Utilities;
 
 /**
  * CardDAV PHP
@@ -83,7 +84,7 @@
  * Apple Addressbook Server:	https://example.com/addressbooks/users/{resource|principal|username}/{collection}/
  * memotoo:						https://sync.memotoo.com/cardDAV/
  * SabreDAV:					https://example.com/addressbooks/{resource|principal|username}/{collection}/
- * ownCloud:					https://example.com/apps/contacts/carddav.php/addressbooks/{resource|principal|username}/{collection}/
+ * ownCloud:					https://example.com/apps/contacts/CardDAV.php/addressbooks/{resource|principal|username}/{collection}/
  * SOGo:						https://example.com/SOGo/dav/{resource|principal|username}/Contacts/{collection}/
  *
  *
@@ -97,7 +98,7 @@
  *
  */
 
-class carddav_backend
+class CardDAV
 {
 	/**
 	 * CardDAV PHP Version
@@ -677,7 +678,7 @@ class carddav_backend
 
 		try
 		{
-			$carddav = new carddav_backend($this->url);
+			$carddav = new CardDAV($this->url);
 			$carddav->set_auth($this->username, $this->password);
 
 			$result = $carddav->query($this->url . $vcard_id . '.vcf', 'GET');
